@@ -34,3 +34,23 @@ for (const animal of animals) {
 }
 */
 
+/*
+  let carnivores =  ['Hyena', 'Geprard', 'Tygr', 'Lev', 'Vlk', 'Rys' ];
+  let herbivores = ['Slon', 'Hroch', 'Ovce', 'Antilopa' , 'Koza'];
+  let omnivores = ['Prase', 'Veverka', 'Krysa', 'Jezevec'];
+  
+  let animals = [...carnivores, ...herbivores, ...omnivores];
+
+
+  let pocet_pismen_celkem = 0;
+  let poradi = 0;
+
+  // for oznacuje cyklus - provede se tolikrat, kolik je v zvirat v promenne animals 
+  for (const animal of animals) {
+    poradi = ;
+    const pocet_pismen = ;
+    pocet_pismen_celkem = ;
+    console.log(poradi + '. zvire: ' + animal + ' ma pocet pismen ' + pocet_pismen) ;
+  } // konec cyklu
+
+*/
