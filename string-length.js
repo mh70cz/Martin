@@ -11,7 +11,10 @@ let hero = 'Sonic';
 let hero_pocet_pismen = hero.length;
 console.log('Hrdina ' + hero + ' ma ' +  hero_pocet_pismen + ' pismen.');
 
-  
+
+let cardSymbols = ['♠', '♥', '♦', '♣'];
+let heart = '❤️';
+
 /* 
 let hero = 'Mario';
 let another_hero = 'Superman'
