@@ -14,7 +14,7 @@ console.log('Magic number is: ' + magicNumber);
 if (magicNumber === 7) {
     console.log('The magic door opens!');
   } else {
-    console.log('The magic door stays close!');
+    console.log('The magic door stays closed!');
   }
 
 
