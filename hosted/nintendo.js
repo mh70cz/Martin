@@ -19,7 +19,7 @@ function setup() {
   rect(200, 50, 600, 400);
 
   //butons;
-  stroke("black")
+  stroke("black");
   strokeWeight(65);
   
   point(75,100);
