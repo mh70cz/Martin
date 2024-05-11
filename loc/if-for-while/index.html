@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>p5.js example</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: "#a0a0aa0";
+    }
+  </style>
+
+  <script> caches.keys().then(list => list.map(key => caches.delete(key))) </script>
+  <script src="../../p5/p5.min.js"></script>
+  <!-- <script src="../addons/p5.sound.js"></script> -->
+  <!-- <script src="sketch.js"></script> -->
+</head>
+
+<body>
+  <main>
+    <h1>if, for ,while</h1>
+
+    <div>
+
+    </div>
+
+    <div>
+      <a href="#" onclick="loadSketch('sketch.js')">Sketch final</a>
+      <a href="#" onclick="loadSketch('sketch-1.js')">Sketch 1</a>
+      <a href="#" onclick="loadSketch('sketch-2.js')">Sketch 2</a>
+      <a href="#" onclick="loadSketch('sketch-3.js')">Sketch 3</a>
+      <a href="#" onclick="loadSketch('sketch-4.js')">Sketch 4</a>
+      <a href="#" onclick="loadSketch('sketch-5.js')">Sketch 5</a>
+  </div>
+
+  <div id="sketch-1" style="display: none;">
+    <p>Nastavení</p> 
+    <ul>    
+      <li>plátna  šířka 1000 , výška 400 <code>createCanvas(1000, 400);</code> </li>
+      <li>pozadí šedé 220 , <code>background(220);</code></li>
+      <li>štětce síla 1 <code>strokeWeight(1);</code></li>
+    </ul>
+
+  </div>
+
+
+
+  <div id="sketch-container"></div>
+
+  <script>
+  function trimAfterDot(inputString) {
+    let dotIndex = inputString.indexOf('.'); // Find the index of the first dot
+    if (dotIndex === -1) return inputString; // Return the original string if there's no dot
+    return inputString.substring(0, dotIndex); // Return the substring before the dot    
+  }
+
+  function toggleVisibility(element) {
+            let div = document.getElementById(element);
+            if(div){
+              if (div.style.display === 'none') {
+                  div.style.display = 'block';
+              } else {
+                  div.style.display = 'none';
+              }
+            }
+        }
+
+
+</script>
+
+  <script>
+      let currentSketchScript = null;
+      let sketchTxtElement = null;
+
+      function loadSketch(sketchFile) {
+          // Remove the existing sketch script if it exists
+          if (currentSketchScript) {
+              window.remove();
+              //currentSketchScript.remove();
+              document.body.removeChild(currentSketchScript);
+              currentSketchScript = null;
+          }
+
+          // Create a new script element and load the new sketch
+          currentSketchScript = document.createElement('script');
+          currentSketchScript.src = sketchFile;
+          document.body.appendChild(currentSketchScript);
+          currentSketchScript.onload = function () {
+              new p5();
+          };
+
+          if(sketchTxtElement){
+            toggleVisibility(sketchTxtElement);  // invisible soon to be old element with a text description
+          }
+          sketchTxtElement = trimAfterDot(sketchFile);
+          toggleVisibility(sketchTxtElement); // visible new element with a text description
+
+
+      }
+
+
+  </script>
+
+
+
+
+
+  </main>
+</body>
+
+</html>
