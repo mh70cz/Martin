@@ -1,8 +1,15 @@
 
 function setup() {
-  createCanvas(1000, 400);
+
+  // createCanvas(1000, 400);
+  
+  let canvas = createCanvas(1000, 400); // Create a canvas
+  canvas.parent('myContainer'); // Assign the canvas to the div with id 'myContainer'
+  
   noFill();
 }
+
+
 
 function draw() {
   background(220);

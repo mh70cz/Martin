@@ -1,55 +1,159 @@
 <!DOCTYPE html>
 <html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>p5.js example</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: "#a0a0a0";
+      }
+    </style>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>p5.js example</title>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-      background-color: "#a0a0aa0";
-    }
-  </style>
+    <script>
+      caches.keys().then((list) => list.map((key) => caches.delete(key)));
+    </script>
+    <script src="../../p5/p5.min.js"></script>
+    <script src="page-logic.js"></script>
+    <!-- <script src="../addons/p5.sound.js"></script> -->
+    <!-- <script src="sketch.js"></script> -->
+  </head>
 
-  <script> caches.keys().then(list => list.map(key => caches.delete(key))) </script>
-  <script src="../../p5/p5.min.js"></script>
-  <!-- <script src="../addons/p5.sound.js"></script> -->
-  <!-- <script src="sketch.js"></script> -->
-</head>
-
-<body>
-  <main>
+  <body>
     <h1>if, for ,while</h1>
+    <main>
+      <div>
+        <a href="#" onclick="loadSketch('sketch-1.js')">Sketch 1</a>
+        <a href="#" onclick="loadSketch('sketch-2.js')">Sketch 2</a>
+        <a href="#" onclick="loadSketch('sketch-3.js')">Sketch 3</a>
+        <a href="#" onclick="loadSketch('sketch-4.js')">Sketch 4</a>
+        <a href="#" onclick="loadSketch('sketch-5.js')">Sketch 5</a>
+        <a href="#" onclick="loadSketch('sketch.js')">Sketch final</a>
+      </div>
+
+      <div id="myContainer"></div>
+      <!-- Specific container for the p5.js sketch -->
+    </main>
+
+    <div id="sketch-1-txt" style="display: none">
+      <h2>Nastavení</h2>
+      <h3><code>function setup() {...}</code></h3>
+      <ul>
+        <li>
+          plátno šířka 1000 , výška 400 <code>createCanvas(1000, 400);</code>
+        </li>
+      </ul>
+      <h3><code>function draw() {...}</code></h3>
+      <ul>
+        <li>pozadí šedé 220 , <code>background(220);</code></li>
+        <li>síla štětce 1 <code>strokeWeight(1);</code></li>
+      </ul>
+    </div>
+
+    <div id="sketch-2-txt" style="display: none">
+      <h2>Svislé čáry</h2>
+
+      <h3><code>function draw() {...}</code></h3>
+      <ul>
+        <li>pozadí šedé 220 , <code>background(220);</code></li>
+        <li>barva štětce whitesmoke <code>stroke("whitesmoke");</code></li>
+        <li>tlušťka barva štětce 1 <code> strokeWeight(1);</code></li>
+      </ul>
+
+      <p>Nakresli svislé čáry přes celou výšku plátna. Vzdálenost první čáry je 100 od kraje. Vzdálenost mezi čarami je 100</p>
+      <p>Použij  <a href="#while">cyklus while</a> </p>
+      <p>Čára se nakrelí pomocí funkce <a href="#line">line</a></p>
+    </div>
+
+
+    
 
     <div>
+      <h2 id="for">cyklus for</h2>
 
+      <pre>
+        <i>
+for (initialization; condition; afterthought){
+  code to run
+}
+        </i>
+      </pre>
+
+      <ul>
+        <li><i>initialization</i> proběhne jednou zcela na začátku</li>
+        <li>
+          <i>condition</i> podmínka, která se vyhodnotí před každým začátkem
+          nového cyklu. Pokud je podmínka splněná, vykoná se kód uvedený v {}.
+        </li>
+        <li><i>afterthought</i> akce, která nastane po konci každého cyklu</li>
+      </ul>
+
+      <p>Příklad</p>
+      <pre>
+        for (let i = 0; i < 7; i = i + 2) {
+          console.log(i);
+          // more statements
+        }
+        
+        0
+        2
+        4
+        6
+      </pre>
     </div>
 
     <div>
-      <a href="#" onclick="loadSketch('sketch.js')">Sketch final</a>
-      <a href="#" onclick="loadSketch('sketch-1.js')">Sketch 1</a>
-      <a href="#" onclick="loadSketch('sketch-2.js')">Sketch 2</a>
-      <a href="#" onclick="loadSketch('sketch-3.js')">Sketch 3</a>
-      <a href="#" onclick="loadSketch('sketch-4.js')">Sketch 4</a>
-      <a href="#" onclick="loadSketch('sketch-5.js')">Sketch 5</a>
-  </div>
+      <h2 id="while">cyklus while</h2>
 
-  <div id="sketch-1" style="display: none;">
-    <p>Nastavení</p> 
-    <ul>    
-      <li>plátna  šířka 1000 , výška 400 <code>createCanvas(1000, 400);</code> </li>
-      <li>pozadí šedé 220 , <code>background(220);</code></li>
-      <li>štětce síla 1 <code>strokeWeight(1);</code></li>
-    </ul>
-
-  </div>
+      <pre>
+        <i>
+while (condition){
+  code to run
+}
+        </i>
+      </pre>
 
 
+      <p>Příklad</p>
+      <pre>
+        let i = 0;
+        while (i < 7) {
+          console.log(i);
+          i = i + 2;
+          // more statements
+        }
+        
+        0
+        2
+        4
+        6
+      </pre>
+    </div>
 
-  <div id="sketch-container"></div>
+    <div>
+      <h2 id="line">line</h2>
+      <pre>
+        <i>
+          line(start_x, start_y, end_x, end_y);
+        </i>
+      </pre>
 
+      <p>Příklad</p>
+      <pre>
+        line(100,0, 100,width);
+      </pre>
+      <p>Nakresli čáru od shora až dolů vzdálenou 100 od levého kraje.</p>
+    </div>  
+
+    </div>
+
+    <script>
+      loadSketch("sketch.js");
+    </script>
+
+    <!--
   <script>
   function trimAfterDot(inputString) {
     let dotIndex = inputString.indexOf('.'); // Find the index of the first dot
@@ -93,10 +197,10 @@
           };
 
           if(sketchTxtElement){
-            toggleVisibility(sketchTxtElement);  // invisible soon to be old element with a text description
+            toggleVisibility(sketchTxtElement);  // make the soon to be old element with a text description invisible
           }
           sketchTxtElement = trimAfterDot(sketchFile);
-          toggleVisibility(sketchTxtElement); // visible new element with a text description
+          toggleVisibility(sketchTxtElement); // make the new element with a text description visible
 
 
       }
@@ -104,11 +208,6 @@
 
   </script>
 
-
-
-
-
-  </main>
-</body>
-
+-->
+  </body>
 </html>
