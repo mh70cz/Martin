@@ -5,9 +5,9 @@ t = Turtle()
 # ---
 
 
-colors = ["red", "blue", "yellow", "lime", "orange"]
+colors = ["red", "blue", "yellow", "lime", "orange", "green"]
 
-for i in range(5):
+for i in range(6):
     t.teleport(i*20,i*50)
     t.color("black", colors[i])
     t.begin_fill()

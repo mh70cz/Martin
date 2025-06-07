@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ai-prompts-english.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<style>
+@media print {
+    body {
+        /*
+        transform: scale(0.75);
+        transform-origin: top left; 
+        */
+        font-size: 100%; /* Reduces text size to 75% of original */
+
+    }
+    .no-print {
+        display: none;
+    }
+}
+</style>
+<h2 id="study-text-why-english-helps-when-talking-to-ai">Study Text: Why English Helps When Talking to AI</h2>
+<p>Hello! This text will help you understand why using English is important when you talk to an AI. An AI is like a smart computer that answers your questions. Let’s learn why English makes it easier for AI to give you good answers. This is written for a 10-year-old with some English knowledge.</p>
+<h3 id="what-is-an-ai">What is an AI?</h3>
+<p>An AI is a computer program that can think and answer questions. It’s like a super helpful friend who knows a lot! You can ask AI about animals, games, or anything you like. But the words you use matter, especially when you use English.</p>
+<h3 id="why-is-english-special-for-ai">Why is English Special for AI?</h3>
+<p>AI can understand many languages, like Spanish, French, or Chinese. But English is special because most of the information AI learns from is in English. For example, many books, websites, and videos are in English. This helps AI find more answers when you ask questions in English.</p>
+<h3 id="does-ai-only-understand-english">Does AI Only Understand English?</h3>
+<p>No! AI can understand other languages, too. But since AI learns a lot from English, it’s often better at answering English questions. This doesn’t mean AI ignores other languages—it just knows more in English.</p>
+<h3 id="why-does-english-help-ai-answer-better">Why Does English Help AI Answer Better?</h3>
+<p>Here are some reasons why English is great for talking to AI:</p>
+<ul>
+<li><strong>Most information is in English</strong>. AI looks at websites, books, and other things to find answers. Many of these are in English, so AI can find more information when you use English.</li>
+<li><strong>AI learns a lot in English</strong>. When people make AI, they use English to teach it. This makes AI really good at understanding English questions.</li>
+<li><strong>English can make answers faster</strong>. Because AI knows English well, it can answer your questions quickly.</li>
+</ul>
+<div style="page-break-before: always;"></div>
+<h3 id="do-you-need-perfect-english">Do You Need Perfect English?</h3>
+<p>No! You don’t need to speak or write perfect English. Simple words and short sentences are enough. For example, you can say, “What is a dog?” or “How do cars work?” AI will understand and try to help, even if your English isn’t perfect.</p>
+<p>Using simple English is the best way to talk to AI. Simple words help AI understand exactly what you want. For example, instead of saying, “Please provide information about felines,” you can say, “Tell me about cats.” This makes it easy for AI to give you a clear answer.</p>
+<p>Tips if your English is not perfect:</p>
+<ul>
+<li>Don’t worry if your English is not perfect - AI will still try to help.</li>
+<li>Practice asking questions in English to get better answers.</li>
+<li>Make short sentences, like “What is a shark?” or “How do planes fly?”</li>
+</ul>
+<h3 id="what-happens-when-you-use-english">What Happens When You Use English?</h3>
+<p>When you ask a question in English, AI can look at more information to give you a good answer. For example, if you ask about tigers, AI can find facts from English websites and books. This helps AI give you more details about what you love, like games or animals.</p>
+<h3 id="what-if-you-dont-use-english">What If You Don’t Use English?</h3>
+<p>You can ask AI questions in other languages, but it might not work as well. Here’s why:</p>
+<ul>
+<li>AI might not understand the question perfectly. It knows other languages, but it’s best at English.</li>
+<li>The answer might be shorter or less clear. This is because AI has less information in other languages.</li>
+</ul>
+<p>This doesn’t mean AI won’t answer—it just means English usually gives better results.</p>
+<h3 id="how-can-english-help-you-learn">How Can English Help You Learn?</h3>
+<p>English is like a key that opens a big box of knowledge! When you use English, AI can tell you more about things you like. For example:</p>
+<ul>
+<li>If you love video games, ask, “What are video games made of?” AI can find lots of information in English.</li>
+<li>If you like animals, ask, “Why do birds fly?” AI can share fun facts from English sources.</li>
+</ul>
+<p>Using English helps you learn more about your favorite topics!</p>
+<h3 id="why-does-this-matter">Why Does This Matter?</h3>
+<p>Learning to use English with AI is fun because it helps you discover new things. It’s like having a super smart teacher who knows about everything! English makes it easier for AI to share knowledge with you. The more you practice, the better your questions and answers will be.</p>
+<p>Keep practicing your English, and you’ll have a great time talking to AI about all the things you love!</p>
+<div style="page-break-before: always;"></div>
+<h2 id="test-why-english-is-important-for-prompting-an-ai-agent">Test: Why English is Important for Prompting an AI Agent</h2>
+<h3 id="1-true-or-false-ai-agents-understand-english-better-than-any-other-language">1. True or False: AI agents understand English better than any other language.</h3>
+<p>True<br>
+False</p>
+<h3 id="2-select-one-option-why-does-prompting-an-ai-in-english-often-give-better-answers">2. Select one option: Why does prompting an AI in English often give better answers?</h3>
+<p>A. English is the only language AI understands.<br>
+B. Most information AI uses is in English.<br>
+C. English is a secret code for AI.<br>
+D. AI only works in English-speaking countries.</p>
+<h3 id="3-select-exactly-two-options-which-of-these-are-reasons-to-use-english-when-prompting-an-ai">3. Select exactly two options: Which of these are reasons to use English when prompting an AI?</h3>
+<p>A. English prompts get faster answers.<br>
+B. English is harder for AI to understand.<br>
+C. Many AI systems are trained in English.<br>
+D. English prompts make the AI confused.</p>
+<h3 id="4-true-or-false-you-need-perfect-english-to-prompt-an-ai-effectively">4. True or False: You need perfect English to prompt an AI effectively.</h3>
+<p>True<br>
+False</p>
+<h3 id="5-select-one-option-what-happens-when-you-prompt-an-ai-in-english">5. Select one option: What happens when you prompt an AI in English?</h3>
+<p>A. The AI ignores your question.<br>
+B. The AI gives shorter and less helpful answers.<br>
+C. The AI can find more information to answer you.<br>
+D. The AI only responds in your native language.</p>
+<h3 id="6-select-exactly-two-options-why-might-an-ai-give-better-answers-in-english">6. Select exactly two options: Why might an AI give better answers in English?</h3>
+<p>A. English is the most common language for AI training.<br>
+B. English questions always get funny answers.<br>
+C. Many websites and books the AI uses are in English.<br>
+D. English makes the AI ignore your question.</p>
+<div style="page-break-before: always;"></div>>
+<h3 id="7-true-or-false-using-english-with-an-ai-is-like-using-the-right-key-to-open-a-treasure-chest-of-information">7. True or False: Using English with an AI is like using the right key to open a treasure chest of information.</h3>
+<p>True<br>
+False</p>
+<h3 id="8-select-exactly-two-options-what-can-happen-if-you-prompt-an-ai-in-a-language-other-than-english">8. Select exactly two options: What can happen if you prompt an AI in a language other than English?</h3>
+<p>A. The AI will give a complete and accurate answer as if it was in English.<br>
+B. The AI might not understand the question well.<br>
+C. The AI will always respond in English.<br>
+D. The AI might give a less detailed answer.</p>
+<h3 id="9-select-one-option-what-is-a-benefit-of-prompting-an-ai-in-simple-english">9. Select one option: What is a benefit of prompting an AI in simple English?</h3>
+<p>A. The AI will only answer in complicated words.<br>
+B. The AI can understand and give clear answers.<br>
+C. The AI will not respond at all.<br>
+D. The AI will answer in a different language.</p>
+<h3 id="10-true-or-false-prompting-an-ai-in-english-can-help-you-learn-more-about-things-you-love-such-as-minecraft-or-brawl-stars">10. True or False: Prompting an AI in English can help you learn more about things you love, such as Minecraft or Brawl Stars.</h3>
+<p>True<br>
+False</p>
+<div class="no-print">
+<h3 id="answer-key">Answer Key</h3>
+<ol>
+<li>False (AI understands many languages, but English often works best due to training data).</li>
+<li>B. Most information AI uses is in English.</li>
+<li>A. English prompts get faster answers. and C. Many AI systems are trained in English.</li>
+<li>False (Simple English is enough to prompt effectively).</li>
+<li>C. The AI can find more information to answer you.</li>
+<li>A. English is the most common language for AI training. and C. Many websites and books the AI uses are in English.</li>
+<li>True (The analogy is correct).</li>
+<li>B. The AI might not understand the question well. and D. The AI might give a less detailed answer.</li>
+<li>B. The AI can understand and give clear answers.</li>
+<li>True (English prompts can unlock more informatio1.n on favorite topics).</li>
+</ol>
+</div>
+</body>
+</html>
